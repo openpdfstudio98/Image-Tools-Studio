@@ -36,3 +36,18 @@ Refined navy/mint responsive layout, keyboard-accessible image selection, `.html
 - All processing and ZIP construction remain local with no third-party dependencies.
 
 Run `node tests/pro-features.cjs` from the project directory for target-size edge cases, encoder fallback rejection and ZIP fixture generation.
+
+## Launch & SEO release
+Canonical production origin: https://imagetoolstudio.vercel.app (from the repository homepage). Crawlable HTML tool links, 12 original step-by-step guides and 36 FAQs, sitemap.xml, robots.txt, share metadata, WebApplication structured data, 404 page, completed support/about/privacy/terms pages. GitHub Issues is the current public contact channel; no unverified email address is published.
+
+### Optional statistics
+Users explicitly opt in through the privacy notice; declining keeps all tools available. Only allowlisted tool/action/count events reach `/api/usage`. DNT and GPC suppress events. The endpoint writes sanitized `studio_usage` records to Vercel function logs; this is approximate operational telemetry, not a durable analytics database. Hosting network/access logs are separate and may include technical information.
+
+Review usage in the existing Vercel project's runtime logs filtered by `studio_usage`. A JSONL log export can be summarized with `node scripts/summarize-usage.cjs < usage.jsonl`. Counts represent opted-in actions, not unique visitors; download events mean requested, not confirmed saved. Log retention depends on hosting settings. No third-party analytics account is required.
+
+### Later account work
+- Search Console submission and site ownership verification require the owner's Google account. Submit the production sitemap after verification. No verification token is fabricated or prefilled.
+- AdSense is not activated: an owner account, site review/approval, real publisher ID and appropriate privacy/advertising configuration are still required. No income or approval is guaranteed.
+- Custom domain is optional; no domain has been purchased. If one is connected, run `node scripts/set-site-origin.cjs https://your-verified-domain` and deploy the changed files together.
+
+Run `node tests/launch.cjs` and `node tests/pro-features.cjs` from the project root. Static preview does not execute `/api/usage`; endpoint tests exercise the handler separately.

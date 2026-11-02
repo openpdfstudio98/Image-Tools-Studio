@@ -16,7 +16,7 @@ Compress image, resize image, crop image, JPG→PNG, PNG→JPG, WebP→JPG, JPG�
 
 ## Not yet production ready
 - Add a real domain and domain-based `canonical` metadata / sitemap.
-- Add a verified support email, review legal/privacy pages, cookie consent rules and ad policies before activating ads.
+- Support email is configured. Review privacy controls and ad policies before activating advertising.
 - Chrome browser smoke tests completed for all 12 tools; real Safari/iOS/Android and AVIF decoding still need device testing. See TEST_REPORT.md.
 - Compression supports quality or target KB for JPG/WebP. Target mode keeps original dimensions and clearly reports unreachable targets; no size guarantee is made.
 - Aspect-locked resize follows the last edited dimension (width or height).
@@ -38,7 +38,7 @@ Refined navy/mint responsive layout, keyboard-accessible image selection, `.html
 Run `node tests/pro-features.cjs` from the project directory for target-size edge cases, encoder fallback rejection and ZIP fixture generation.
 
 ## Launch & SEO release
-Canonical production origin: https://imagetoolstudio.vercel.app (from the repository homepage). Crawlable HTML tool links, 12 original step-by-step guides and 36 FAQs, sitemap.xml, robots.txt, share metadata, WebApplication structured data, 404 page, completed support/about/privacy/terms pages. GitHub Issues is the current public contact channel; no unverified email address is published.
+Canonical production origin: https://imagetoolstudio.vercel.app (from the repository homepage). Crawlable HTML tool links, 12 original step-by-step guides and 36 FAQs, sitemap.xml, robots.txt, share metadata, WebApplication structured data, 404 page, completed support/about/privacy/terms pages. Support email: imagetoolstudio@gmail.com (provided by the owner). GitHub Issues remains available for public technical reports.
 
 ### Optional statistics
 Users explicitly opt in through the privacy notice; declining keeps all tools available. Only allowlisted tool/action/count events reach `/api/usage`. DNT and GPC suppress events. The endpoint writes sanitized `studio_usage` records to Vercel function logs; this is approximate operational telemetry, not a durable analytics database. Hosting network/access logs are separate and may include technical information.

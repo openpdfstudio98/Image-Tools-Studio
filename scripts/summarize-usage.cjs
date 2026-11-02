@@ -1,0 +1,3 @@
+// Read a Vercel runtime log export / JSONL from stdin. No raw fields are printed.
+const readline=require('node:readline');const totals=new Map();
+const rl=readline.createInterface({input:process.stdin});rl.on('line',line=>{try{let row=JSON.parse(line);if(typeof row.message==='string')row=JSON.parse(row.message);if(row.type!=='studio_usage'||!Number.isInteger(row.count)||row.count<0||row.count>20)return;const key=JSON.stringify([row.tool,row.event]);totals.set(key,(totals.get(key)||0)+row.count);}catch{}});rl.on('close',()=>{console.log('tool,event,count');for(const [key,count]of [...totals].sort()){const [tool,event]=JSON.parse(key);if(!/^[a-z-]+$/.test(tool)||!/^[a-z_]+$/.test(event))continue;console.log(`${tool},${event},${count}`);}});

@@ -43,3 +43,12 @@ No real Safari/iPhone/iPad/Android device tests, AVIF decoding test, 35MB/44MP s
 - Node tests exercise target boundaries, unreachable target, PNG target rejection, unsupported encoder rejection and ZIP fixture generation. Python zipfile independently validated CRC, UTF-8 Japanese filename handling, payload contents and extraction of the generated archive.
 - ZIP download event was not observed in the cloud browser despite the prepared ZIP link being available. The underlying ZIP encoder passed independent extraction checks; end-to-end ZIP saving on a normal browser/device remains a verification limitation.
 - Real Safari/iOS/Android, peak memory limits, 20-file maximum stress and all pre-existing tool combinations were not retested in this upgrade.
+
+
+# Launch & SEO verification — 2 November 2026
+
+Added source-rendered tool navigation, 12 tailored guides/36 FAQs, canonical/OG tags, sitemap, robots, truthful WebApplication schema without fabricated ratings, 404, support and policy pages. Stats are explicitly opt-in, first-party, fixed tool/action/count only; no filenames or pixels accepted by the endpoint. The endpoint writes sanitized operational logs, not permanent aggregate analytics.
+
+`node tests/launch.cjs` validates canonical/sitemap consistency, internal links, script assets, all guides and endpoint rejection of filenames, unrecognized events, invalid counts, wrong origins, methods, oversized declared bodies and wrong content types. Existing target/ZIP utility tests are also rerun. Browser consent and tool smoke checks are recorded in the PR. Real mobile devices, Search Console ownership and AdSense approval remain outside automated verification.
+
+Client privacy tests passed: no network event before consent or after decline, GPC suppresses events, file-derived CustomEvent details are excluded. Browser smoke check confirmed Decline survives reload, choices can be reopened, and compress/download work with statistics declined.

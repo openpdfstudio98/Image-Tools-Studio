@@ -52,3 +52,7 @@ Added source-rendered tool navigation, 12 tailored guides/36 FAQs, canonical/OG 
 `node tests/launch.cjs` validates canonical/sitemap consistency, internal links, script assets, all guides and endpoint rejection of filenames, unrecognized events, invalid counts, wrong origins, methods, oversized declared bodies and wrong content types. Existing target/ZIP utility tests are also rerun. Browser consent and tool smoke checks are recorded in the PR. Real mobile devices, Search Console ownership and AdSense approval remain outside automated verification.
 
 Client privacy tests passed: no network event before consent or after decline, GPC suppresses events, file-derived CustomEvent details are excluded. Browser smoke check confirmed Decline survives reload, choices can be reopened, and compress/download work with statistics declined.
+
+## Production verification after merge
+
+PR #3 merged and the production Vercel status passed. Verified the homepage, canonical compression URL, interactive FAQ, 17-URL XML sitemap and support page on https://imagetoolstudio.vercel.app. A two-image batch ZIP downloaded successfully through the production HTTPS site; Python zipfile verified both expected WebP entries and all CRCs. This resolves the earlier cloud-browser ZIP download limitation observed on the HTTP local preview. Optional statistics consent was exercised on production; no application-origin console errors were observed. Production function log contents were not inspected.

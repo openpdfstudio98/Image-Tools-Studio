@@ -30,3 +30,16 @@ Inspected desktop home and tool pages, and the resize tool in a 390px-wide same-
 ## Scope and limits
 
 No real Safari/iPhone/iPad/Android device tests, AVIF decoding test, 35MB/44MP stress test, exhaustive transform combinations, live Vercel deployment test, or AdSense integration test was performed. The tools remain browser-local. No guarantee of target-KB compression or universal image compatibility is made.
+
+
+# v0.3 upgrade checks — 2 November 2026
+
+- Desktop Chrome: noisy 800×600 PNG (1408.8 KB) → WebP 98.1 KB with a 100 KB target; dimensions preserved, target-met state and before/after shown.
+- Same input with 1 KB target: smallest attempted output 80.8 KB; explicit target-NOT-reached state and downloadable best attempt.
+- Batch with two valid images and a corrupt PNG: two ready, one failed; corrupt image did not stop the queue. Individual result controls and ZIP link available.
+- Batch PNG + target mode rejected with an actionable message.
+- Cancelled a batch during its first 2400×1800 image: cancellation completed, zero outputs retained, controls restored.
+- Resize regression: 400×200 → 100×50 PNG download completed; before/after image elements loaded at the correct original/output dimensions.
+- Node tests exercise target boundaries, unreachable target, PNG target rejection, unsupported encoder rejection and ZIP fixture generation. Python zipfile independently validated CRC, UTF-8 Japanese filename handling, payload contents and extraction of the generated archive.
+- ZIP download event was not observed in the cloud browser despite the prepared ZIP link being available. The underlying ZIP encoder passed independent extraction checks; end-to-end ZIP saving on a normal browser/device remains a verification limitation.
+- Real Safari/iOS/Android, peak memory limits, 20-file maximum stress and all pre-existing tool combinations were not retested in this upgrade.

@@ -1,4 +1,4 @@
-# Image Tools Studio — MVP v0.2
+# Image Tools Studio — MVP v0.3
 
 A dependency-free, static, mobile-friendly website with 12 browser-based image tools.
 
@@ -18,7 +18,7 @@ Compress image, resize image, crop image, JPG→PNG, PNG→JPG, WebP→JPG, JPG�
 - Add a real domain and domain-based `canonical` metadata / sitemap.
 - Add a verified support email, review legal/privacy pages, cookie consent rules and ad policies before activating ads.
 - Chrome browser smoke tests completed for all 12 tools; real Safari/iOS/Android and AVIF decoding still need device testing. See TEST_REPORT.md.
-- Compression tool uses chosen quality and format; it does **not** guarantee a target KB size.
+- Compression supports quality or target KB for JPG/WebP. Target mode keeps original dimensions and clearly reports unreachable targets; no size guarantee is made.
 - Aspect-locked resize follows the last edited dimension (width or height).
 - Basic crop uses pixel coordinates, not dragging selection.
 - Color picker samples an original-resolution canvas, with a scaled display.
@@ -28,3 +28,11 @@ Compress image, resize image, crop image, JPG→PNG, PNG→JPG, WebP→JPG, JPG�
 
 ## v0.2
 Refined navy/mint responsive layout, keyboard-accessible image selection, `.html` route initialization, synchronized aspect-ratio inputs, stale-result invalidation, upload/processing race guards, encoder fallback detection, original-resolution color sampling, and Canvas-filter-independent effects. Compression reports when output is larger.
+
+## v0.3
+- Compress to 100 / 200 / 500 KB or a custom maximum, preserving dimensions.
+- Batch compression: up to 20 images, 35 MB each, 100 MB combined; sequential processing, cancellation, per-file results, individual downloads and ZIP export. Batch output is capped at 150 MB.
+- Before/after image comparison for every tool producing an output image.
+- All processing and ZIP construction remain local with no third-party dependencies.
+
+Run `node tests/pro-features.cjs` from the project directory for target-size edge cases, encoder fallback rejection and ZIP fixture generation.

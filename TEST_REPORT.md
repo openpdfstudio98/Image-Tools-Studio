@@ -56,3 +56,16 @@ Client privacy tests passed: no network event before consent or after decline, G
 ## Production verification after merge
 
 PR #3 merged and the production Vercel status passed. Verified the homepage, canonical compression URL, interactive FAQ, 17-URL XML sitemap and support page on https://imagetoolstudio.vercel.app. A two-image batch ZIP downloaded successfully through the production HTTPS site; Python zipfile verified both expected WebP entries and all CRCs. This resolves the earlier cloud-browser ZIP download limitation observed on the HTTP local preview. Optional statistics consent was exercised on production; no application-origin console errors were observed. Production function log contents were not inspected.
+
+
+# Local eraser tests — 3 November 2026
+
+- Core tests: a masked white rectangle on a known linear gradient was reconstructed with zero mean absolute RGB error in the deterministic fixture. Outside-mask pixels and alpha are unchanged. Edge masks, texture locality, empty masks, oversize masks and invalid dimensions were checked. This synthetic result does not imply accuracy on photographs.
+- Chrome UI: file selection, brush-size adjustment and an actual mouse drag created a mask. Undo and Reset were checked; Reset disables processing/download until a new selection exists.
+- Synthetic gradient: PNG download completed at 600×400; independent Pillow inspection found the erased center (130,139,150,255) and unchanged outside point (74,104,150,255).
+- Synthetic checker texture: processing and PNG download completed; visual inspection confirms blur/seams in the selected area. No texture-reconstruction claim is made.
+- Oversized brush selection was rejected before worker execution with an actionable message.
+- 3200×2000 upload disclosed a working/download size of 2048×1280 and completed processing. Cancel was retested after guarding the asynchronous PNG encoding race; cancellation retained the selection and applied no result.
+- A 390px-wide iframe had equal content and scroll widths (375px excluding scrollbar), with stacked controls. This is CSS responsiveness testing, not physical touch-device testing.
+- Existing SEO/link/sitemap, privacy-client, endpoint allowlist and target-compression/ZIP utility checks passed. Verification-token HTML files are excluded from SEO page tests.
+- Real Safari/iPhone/Android pointer behavior, AVIF decoding, peak memory and broad real-photo output quality remain unverified.

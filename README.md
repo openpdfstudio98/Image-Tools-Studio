@@ -1,6 +1,6 @@
 # Image Tools Studio — MVP v0.3
 
-A dependency-free, static, mobile-friendly website with 12 browser-based image tools.
+A dependency-free, static, mobile-friendly website with 13 browser-based image tools.
 
 ## Quick start
 Open `public/index.html` in a browser, or run `python3 -m http.server 8080 --directory public` and visit `http://localhost:8080`.
@@ -51,3 +51,10 @@ Review usage in the existing Vercel project's runtime logs filtered by `studio_u
 - Custom domain is optional; no domain has been purchased. If one is connected, run `node scripts/set-site-origin.cjs https://your-verified-domain` and deploy the changed files together.
 
 Run `node tests/launch.cjs` and `node tests/pro-features.cjs` from the project root. Static preview does not execute `/api/usage`; endpoint tests exercise the handler separately.
+
+## Remove Watermark / Object Eraser — 3 November 2026
+`/remove-watermark` provides a brush mask, adjustable diameter, Undo, Clear selection, Cancel, original/output previews and PNG export. A local Web Worker initializes selected pixels from unmasked row/column boundaries, then relaxes the fill. It is not an AI model and cannot recover hidden image detail; texture often becomes blurred. No image is uploaded. Use images you own or have permission to edit.
+
+Inputs: supported JPG/PNG/WebP/AVIF up to 35 MB and 44 MP. Working images are fitted within 2048 px per side, with the reduced download dimensions disclosed. A selection may cover at most 15% of the working image or 200,000 pixels, with up to 30 strokes. Each run starts from the loaded original. Cancel terminates the worker and invalidates pending PNG encoding.
+
+Run `node tests/inpaint.cjs` for deterministic fill, untouched-pixel, alpha, edge-mask and invalid-mask checks. Real touch devices and Safari have not been tested.

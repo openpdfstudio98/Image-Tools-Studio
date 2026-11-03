@@ -1,5 +1,5 @@
 'use strict';
-const tools=new Set(['home','about','contact','privacy','terms','compress-image','resize-image','crop-image','jpg-to-png','png-to-jpg','webp-to-jpg','jpg-to-webp','rotate-image','flip-image','grayscale-image','brightness-image','image-color-picker']);
+const tools=new Set(['home','about','contact','privacy','terms','compress-image','resize-image','crop-image','jpg-to-png','png-to-jpg','webp-to-jpg','jpg-to-webp','rotate-image','flip-image','grayscale-image','brightness-image','image-color-picker','remove-watermark']);
 const events=new Set(['page_view','process_success','process_failure','batch_success','batch_failure','download_requested','zip_requested']);
 // Best-effort per-instance cap; events are approximate operational signals, not billing data.
 let bucket=0,minute=0;

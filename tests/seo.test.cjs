@@ -3,7 +3,7 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const path=require('node:path');
 const root=path.resolve(__dirname,'../public');
-const origin='https://imagetoolstudio.vercel.app';
+const origin='https://image.openpdfstudio.com';
 
 test('sitemap pages exist and use their own canonical URL',()=>{
   const xml=fs.readFileSync(path.join(root,'sitemap.xml'),'utf8');
